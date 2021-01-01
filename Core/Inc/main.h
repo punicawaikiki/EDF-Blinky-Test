@@ -64,8 +64,8 @@ void Error_Handler(void);
 #define LD_USER3_GPIO_Port GPIOA
 #define LD_USER2_Pin GPIO_PIN_5
 #define LD_USER2_GPIO_Port GPIOJ
-#define BT_USER_Pin GPIO_PIN_1
-#define BT_USER_GPIO_Port GPIOB
+#define BT_USER_Pin GPIO_PIN_0
+#define BT_USER_GPIO_Port GPIOA
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
