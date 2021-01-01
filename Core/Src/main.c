@@ -102,6 +102,9 @@ int main(void)
   MX_RNG_Init();
   /* USER CODE BEGIN 2 */
   debugPrintln( "Starting FreeRTOS..." );
+  HAL_GPIO_EXTI_IRQHandler(BLUE_BUTTON_Pin);
+
+
   HAL_GPIO_TogglePin(LD_USER1_GPIO_Port, LD_USER1_Pin);
   HAL_GPIO_TogglePin(LD_USER2_GPIO_Port, LD_USER2_Pin);
   HAL_GPIO_TogglePin(LD_USER3_GPIO_Port, LD_USER3_Pin);
