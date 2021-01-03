@@ -25,6 +25,7 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include "helper_functions.h"
+#include "edf_tasks.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -34,13 +35,6 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define TRUE 1
-#define FALSE 0
-
-#define NOT_PRESSED FALSE
-#define PRESSED TRUE
-//global space for some variable
-uint8_t button_status_flag = NOT_PRESSED;
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -55,7 +49,7 @@ RNG_HandleTypeDef hrng;
 UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN PV */
-
+uint16_t buttonCounter = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -64,12 +58,22 @@ static void MX_GPIO_Init(void);
 static void MX_USART1_UART_Init(void);
 static void MX_RNG_Init(void);
 /* USER CODE BEGIN PFP */
-
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
+void HAL_GPIO_EXTI_Callback ( uint16_t GPIO_Pin)
+{
+	if ( GPIO_Pin == BLUE_BUTTON_Pin)
+	{
+		buttonCounter++;
+	}
+	else
+	{
+		__NOP();
+	}
+}
 /* USER CODE END 0 */
 
 /**
@@ -103,13 +107,14 @@ int main(void)
   MX_USART1_UART_Init();
   MX_RNG_Init();
   /* USER CODE BEGIN 2 */
-  debugPrintln( "Starting FreeRTOS..." );
+  debugPrintln( "Init FreeRTOS..." );
   HAL_GPIO_EXTI_IRQHandler(BLUE_BUTTON_Pin);
 
 
   HAL_GPIO_TogglePin(LD_USER1_GPIO_Port, LD_USER1_Pin);
   HAL_GPIO_TogglePin(LD_USER2_GPIO_Port, LD_USER2_Pin);
   HAL_GPIO_TogglePin(LD_USER3_GPIO_Port, LD_USER3_Pin);
+  debugPrintln( "Starting FreeRTOS..." );
   vTaskStartScheduler();
   /* USER CODE END 2 */
 
@@ -279,7 +284,7 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin : BLUE_BUTTON_Pin */
   GPIO_InitStruct.Pin = BLUE_BUTTON_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(BLUE_BUTTON_GPIO_Port, &GPIO_InitStruct);
 
@@ -310,7 +315,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     HAL_IncTick();
   }
   /* USER CODE BEGIN Callback 1 */
-
   /* USER CODE END Callback 1 */
 }
 

@@ -69,6 +69,8 @@ void Error_Handler(void);
 #define BLUE_BUTTON_EXTI_IRQn EXTI0_IRQn
 /* USER CODE BEGIN Private defines */
 
+#define DEBUG_MODE 1
+
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

@@ -86,11 +86,11 @@ BaseType_t createEDFTask( TaskFunction_t taskCode,					// Pointer to the task en
 // Declaration
 void rescheduleEDF ( void );
 
-// Return Type: BaseType_t
+// Return Type: void
 // Name: deleteEDFTask
 // Parameters: const char* taskName
 // Declaration
-BaseType_t deleteEDFTask( const char* taskName);
+void deleteEDFTask( const char* taskName);
 
 // Return Type: void
 // Name: vApplicationIdleHook
