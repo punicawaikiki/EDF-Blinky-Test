@@ -8,21 +8,24 @@ uint8_t ledTask2Created = 0;
 uint8_t ledTask3Created = 0;
 
 
-
+// led task 1
 void led1Flash( void* parameter)
 {
-	uint32_t ledCounter = 0;
 	for( ;; )
 	{
+		// unused only need for blocking loop
+		uint32_t ledCounter = 0;
 		#if DEBUG_MODE
 			edfTasks.tasksArray[0].startTime = xTaskGetTickCount();
 		#endif
+		// get current tick
 		TickType_t currentTick = xTaskGetTickCount();
+		// blocking loop for ledTaskWCET
 		while( (xTaskGetTickCount() - currentTick) < ledTaskWCET)
 		{
 		    ledCounter++;
 		}
-		ledCounter = 0;
+		// toggle led
 		HAL_GPIO_TogglePin(LD_USER1_GPIO_Port, LD_USER1_Pin);
 		#if DEBUG_MODE
 			edfTasks.tasksArray[0].stopTime = xTaskGetTickCount();
@@ -32,25 +35,31 @@ void led1Flash( void* parameter)
 				edfTasks.tasksArray[0].maxRunningTime = edfTasks.tasksArray[0].lastRunningTime;
 			}
 		#endif
+		// check button state
 		ledTaskControl();
+		// edf rescheduling
 		rescheduleEDF();
 	}
 }
 
+// led task 2
 void led2Flash( void* parameter)
 {
-	uint32_t ledCounter = 0;
 	for( ;; )
 	{
+		// unused only need for blocking loop
+		uint32_t ledCounter = 0;
 		#if DEBUG_MODE
 			edfTasks.tasksArray[1].startTime = xTaskGetTickCount();
 		#endif
+		// get current tick
 		TickType_t currentTick = xTaskGetTickCount();
+		// blocking loop for ledTaskWCET
 		while( (xTaskGetTickCount() - currentTick) < ledTaskWCET)
 		{
 		    ledCounter++;
 		}
-		ledCounter = 0;
+		// toggle led
 		HAL_GPIO_TogglePin(LD_USER2_GPIO_Port, LD_USER2_Pin);
 		#if DEBUG_MODE
 			edfTasks.tasksArray[1].stopTime = xTaskGetTickCount();
@@ -60,45 +69,57 @@ void led2Flash( void* parameter)
 				edfTasks.tasksArray[1].maxRunningTime = edfTasks.tasksArray[1].lastRunningTime;
 			}
 		#endif
+		// check button state
 		ledTaskControl();
+		// edf rescheduling
 		rescheduleEDF();
 	}
 }
 
+
+// led task 1
 void led3Flash( void* parameter)
 {
-	uint32_t ledCounter = 0;
 	for( ;; )
 	{
+		// unused only need for blocking loop
+		uint32_t ledCounter = 0;
 		#if DEBUG_MODE
 			edfTasks.tasksArray[2].startTime = xTaskGetTickCount();
 		#endif
+		// get current tick
 		TickType_t currentTick = xTaskGetTickCount();
+		// blocking loop for ledTaskWCET
 		while( (xTaskGetTickCount() - currentTick) < ledTaskWCET)
 		{
 		    ledCounter++;
 		}
-		ledCounter = 0;
+		// toggle led
 		HAL_GPIO_TogglePin(LD_USER3_GPIO_Port, LD_USER3_Pin);
 		#if DEBUG_MODE
 			edfTasks.tasksArray[2].stopTime = xTaskGetTickCount();
 			edfTasks.tasksArray[2].lastRunningTime = edfTasks.tasksArray[2].stopTime - edfTasks.tasksArray[2].startTime;
-			if ( edfTasks.tasksArray[0].lastRunningTime > edfTasks.tasksArray[2].maxRunningTime )
+			if ( edfTasks.tasksArray[2].lastRunningTime > edfTasks.tasksArray[2].maxRunningTime )
 			{
 				edfTasks.tasksArray[2].maxRunningTime = edfTasks.tasksArray[2].lastRunningTime;
 			}
 		#endif
+		// check button state
 		ledTaskControl();
+		// edf rescheduling
 		rescheduleEDF();
 	}
 }
 
+
 void ledTaskControl( void )
 {
+	// iterate over button states
 	if( buttonCounter == 1 )
 	{
 		if( ledTask1Created == 0 )
 		{
+			// create led task 1
 			#if DEBUG_MODE
 			debugPrintln("ButtonCounter is 1 -> start first EDF LED Task");
 			#endif
@@ -110,6 +131,7 @@ void ledTaskControl( void )
 	{
 		if( ledTask2Created == 0 )
 		{
+			// create led task 2
 			#if DEBUG_MODE
 			debugPrintln("ButtonCounter is 2 -> start second EDF LED Task");
 			#endif
@@ -121,6 +143,7 @@ void ledTaskControl( void )
 	{
 		if( ledTask3Created == 0 )
 		{
+			// create led task 3
 			#if DEBUG_MODE
 			debugPrintln("ButtonCounter is 3 -> start third EDF LED Task");
 			#endif
@@ -132,6 +155,7 @@ void ledTaskControl( void )
 	{
 		if( ledTask1Created == 1)
 		{
+			// delete led task 1
 			ledTask1Created = 0;
 			#if DEBUG_MODE
 			debugPrintln("ButtonCounter is 4 -> delete first EDF LED Task");
@@ -144,6 +168,7 @@ void ledTaskControl( void )
 	{
 		if( ledTask2Created == 1)
 		{
+			// delete led task 2
 			ledTask2Created = 0;
 			#if DEBUG_MODE
 			debugPrintln("ButtonCounter is 5 -> delete second EDF LED Task");
@@ -156,6 +181,7 @@ void ledTaskControl( void )
 	{
 		if( ledTask3Created == 1)
 		{
+			// delete led 3 and reset
 			ledTask3Created = 0;
 			buttonCounter = 0;
 			#if DEBUG_MODE

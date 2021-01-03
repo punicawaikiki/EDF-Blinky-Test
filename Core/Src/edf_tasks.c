@@ -218,6 +218,7 @@ void deleteEDFTask( const char* taskName)
 //	this hook is called if no task is in ready state
 void vApplicationIdleHook( void )
 {
+	// check button state for led blinky demo
 	if( edfTasks.numberOfEDFTasks == 0)
 	{
 		ledTaskControl();
