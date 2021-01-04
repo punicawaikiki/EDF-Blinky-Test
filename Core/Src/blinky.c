@@ -187,7 +187,10 @@ void ledTaskControl( void )
 			#if DEBUG_MODE
 			debugPrintln("ButtonCounter is 6 -> delete third EDF LED Task");
 			#endif
-			HAL_GPIO_WritePin(LD_USER3_GPIO_Port, LD_USER3_Pin, 0);
+			// enable all LED`s
+			HAL_GPIO_WritePin(LD_USER1_GPIO_Port, LD_USER1_Pin, 1);
+			HAL_GPIO_WritePin(LD_USER2_GPIO_Port, LD_USER2_Pin, 1);
+			HAL_GPIO_WritePin(LD_USER3_GPIO_Port, LD_USER3_Pin, 1);
 			deleteEDFTask( "LED3_FLASH" );
 		}
 	}
