@@ -33,7 +33,7 @@ State 4 is the only state with deadline error`s which can be seen visually on th
 - Stop Bits: 1
 - Flow Control: None
 
-The USART print out can be disabeld in main.h under 
+The USART print out can be disabeld in main.h as under the following line: 
 ```C
 #define DEBUG_MODE ( 1 ) // switch to zero to disable USART print outs
 ```
