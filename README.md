@@ -40,12 +40,12 @@ The USART print out can be disabeld in main.h under
 
 ## Installation
 
-The binary file can be found under the folder Debug in the repository. Download this file and copy it to the STM32F769I-Disc0 board.
+The binary file can be found under the folder Debug in the repository. Download this file and copy it to the STM32F769I-Disc0 board.  
 :warning: **This repository contains only the matching driver and properties for the STM32F769I-Disc0 board.** Please only use the binary file for this board.
 
 ## Portability
 
-The whole EDF Scheduler consists if two files and can easily be ported to other projects and boards.
+The whole EDF Scheduler consists if two files and can easily be ported to other projects and boards.  
 :warning: **The minimum Stack size for FreeRTOS task must be adjusted at least to 200 words.**
 
 ## Contribution
