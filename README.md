@@ -13,7 +13,7 @@ In the demo the three onboard LED`s were used for visual feedback and the Blue O
 At the beginning the three LED`s are activated but no task except the modified FreeRTOS Idle Tasks are not created.
 The user can step thorugh the individual states with the help of the Blue Onboard Button. The States are as follows:
 
-| State | Button pressed counter | task(`s) running                     | total execution time | CPU Load  | deadline errors   |
+| State | Button pressed counter | task(`s) running                     | total execution time | CPU load  | deadline errors   |
 |:-----:|:----------------------:|:------------------------------------:|:--------------------:|:---------:|:-----------------:|
 | 1     | 0                      | idle Task                            | 0                    | 0         |:x:                |
 | 2     | 1                      | LED1_FLASH + idle Task               | 50ms                 | 50%       |:x:                |
