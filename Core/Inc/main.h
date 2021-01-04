@@ -69,7 +69,7 @@ void Error_Handler(void);
 #define BLUE_BUTTON_EXTI_IRQn EXTI0_IRQn
 /* USER CODE BEGIN Private defines */
 
-#define DEBUG_MODE 1
+#define DEBUG_MODE ( 1 ) // switch to zero to disable USART print outs
 
 /* USER CODE END Private defines */
 
