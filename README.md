@@ -35,7 +35,7 @@ State 4 is the only state with deadline error`s which can be seen visually on th
 
 The USART print out can be disabeld in main.h under 
 ```C
-#define DEBUG_MODE 1 // switch to zero to disable USART print outs
+#define DEBUG_MODE ( 1 ) // switch to zero to disable USART print outs
 ```
 
 ## Installation
