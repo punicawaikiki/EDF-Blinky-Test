@@ -45,7 +45,7 @@ The binary file can be found under the folder Debug in the repository. Download 
 
 ## Portability
 
-The whole EDF Scheduler consists if two files and can easily be ported to other projects and boards.  
+The whole EDF Scheduler consists if two files (edf_tasks.h and edf_tasks.c) and can easily be ported to other projects and boards.  
 :warning: **The minimum Stack size for FreeRTOS task must be adjusted at least to 200 words.**
 
 ## Contribution
