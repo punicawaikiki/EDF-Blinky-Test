@@ -40,7 +40,7 @@ The USART print out can be disabled in main.h as under the following line:
 
 ## Installation
 
-The binary file can be found under the folder Debug in the repository. Download this file and copy it to the STM32F769I-Disc0 board.  
+The binary file can be found under the folder Debug in the repository or directly download it [here](https://gitlab.fa-wi.de/punicawaikiki/edf-blinky-test/-/raw/master/Debug/edf-blinky-test.bin). Download this file and copy it to the STM32F769I-Disc0 board.  
 :warning: **This repository contains only the matching driver and properties for the STM32F769I-Disc0 board.** Please only use the binary file for this board.
 
 ## Portability
