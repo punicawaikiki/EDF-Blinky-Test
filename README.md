@@ -33,7 +33,7 @@ State 4 is the only state with deadline error`s which can be seen visually on th
 - Stop Bits: 1
 - Flow Control: None
 
-The USART print out can be disabeld in main.h as under the following line: 
+The USART print out can be disabled in main.h as under the following line: 
 ```C
 #define DEBUG_MODE ( 1 ) // switch to zero to disable USART print outs
 ```
@@ -45,7 +45,7 @@ The binary file can be found under the folder Debug in the repository. Download 
 
 ## Portability
 
-The whole EDF Scheduler consists if two files and can easily be ported to other projects and boards.  
+The whole EDF Scheduler consists of two files and can easily be ported to other projects and boards.  
 :warning: **The minimum Stack size for FreeRTOS task must be adjusted at least to 200 words.**
 
 ## Contribution
