@@ -1,5 +1,6 @@
 # Earliest Deadline First (EDF) Blinky Demo
 
+## Introduction
 This repository contains a demo project for an EDF Scheduler which is based on [FreeRTOS](https://www.freertos.org/) and implemented on a [STM32F769I-Disc0](https://www.st.com/en/evaluation-tools/32f769idiscovery.html) board.
 In the demo the three onboard LED`s were used for visual feedback and the Blue Onboard Button serves for task selection. Each LED represents one task with the following properties:
 
@@ -36,3 +37,19 @@ The USART print out can be disabeld in main.h under
 ```C
 #define DEBUG_MODE 1 // switch to zero to disable USART print outs
 ```
+
+## Installation
+
+The binary file can be found under the folder Debug in the repository. Download this file and copy it to the STM32F769I-Disc0 board.
+:warning: **This repository contains only the matching driver and properties for the STM32F769I-Disc0 board.** Please only use the binary file for this board.
+
+## Portability
+
+The whole EDF Scheduler consists if two files and can easily be ported to other projects and boards.
+:warning: **The minimum Stack size for FreeRTOS task must be adjusted at least to 200 words.**
+
+## Contribution
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
