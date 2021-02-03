@@ -1,0 +1,4 @@
+blinky.c:115:6:ledTaskControl	32	static
+blinky.c:12:6:led1Flash	24	static
+blinky.c:46:6:led2Flash	24	static
+blinky.c:81:6:led3Flash	24	static

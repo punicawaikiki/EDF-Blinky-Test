@@ -1,0 +1,8 @@
+helper_functions.c:13:6:prvSRand	0	static
+helper_functions.c:19:13:uxRand	40	static
+helper_functions.c:48:6:vLoggingPrintf	0	static
+helper_functions.c:53:10:ulApplicationGetNextSequenceNumber	0	static
+helper_functions.c:65:12:xApplicationGetRandomNumber	8	static
+helper_functions.c:71:6:vAssertCalled	16	static,ignoring_inline_asm
+helper_functions.c:91:6:debugPrint	8	static
+helper_functions.c:100:6:debugPrintln	24	static

@@ -1,0 +1,3 @@
+hooks.c:21:13:pcApplicationHostnameHook	0	static
+hooks.c:30:6:vApplicationMallocFailedHook	8	static
+hooks.c:44:6:vApplicationStackOverflowHook	8	static
